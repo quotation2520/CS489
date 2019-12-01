@@ -10,6 +10,17 @@
     <title>2019 Fall CS489 Project</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        textarea.autosize {
+            min-height: 200px;
+        }
+    </style>
+    <script>
+        function resize(obj) {
+            obj.style.height = "1px";
+            obj.style.height = (12 + obj.scrollHeight) + "px";
+        }
+    </script>
 </head>
 
 
