@@ -31,6 +31,7 @@ require('view/top.php')
         strong opinions of both sides, but only votes for the opponents will be shown to others.
         Once you take a side, you can freely leave comments or post opinions on the topic.
         Remember, people with opposing ideas grant yours. Carefully organize your logic and word choices.
+        1234567789 test
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
