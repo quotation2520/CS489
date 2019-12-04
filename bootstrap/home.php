@@ -2,6 +2,9 @@
 require('view/top.php')
 ?>
 
+<?php
+require('login.php')
+?>
 <div role="tabpanel">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
@@ -10,7 +13,6 @@ require('view/top.php')
         <li role="presentation"><a href="feedback.php">Feedback</a></li>
     </ul>
 </div>
-
 <p></p>
 
 <div class="panel panel-default">
@@ -29,15 +31,15 @@ require('view/top.php')
                 Do you agree with this practice?
             </div>
             <?php
-                require('view/add_opinion.php')
+            require('view/add_opinion.php')
             ?>
         </div>
     </div>
 
     <div class="panel-body" style="height:300px; overflow:auto">
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;background-color:#b4c7e7">
-                <p><strong style="font-size:x-large"> Argument Title</strong> 42 Approves</p>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#4472c4">
+                <p><strong style="font-size:x-large"> Argument Title</strong></p>
 
                 This is where a idea comes <br>
                 This is where a idea comes <br>
@@ -47,13 +49,16 @@ require('view/top.php')
                 <p style="font-style:italic;text-align:end"> written by Author</p>
             </div>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;background-color:#f8cbad">
-                HI
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#ed7d31">
+                <p><strong style="font-size:x-large"> Argument Title</strong> 21 Approves</p>
+
+                This is where a idea comes <br>
+                This is where a idea comes <br>
             </div>
         </div>
         <br>
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;background-color:#b4c7e7">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#4472c4">
                 <p><strong style="font-size:x-large"> Argument Title</strong> 42 Approves</p>
 
                 This is where a idea comes <br>
@@ -63,8 +68,11 @@ require('view/top.php')
                 This is where a idea comes <br>
                 <p style="font-style:italic;text-align:end"> written by Author</p>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;background-color:#f8cbad">
-                HI
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#ed7d31">
+                <p><strong style="font-size:x-large"> Argument Title</strong> 21 Approves</p>
+
+                This is where a idea comes <br>
+                This is where a idea comes <br>
             </div>
         </div>
     </div>

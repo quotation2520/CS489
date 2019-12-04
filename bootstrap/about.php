@@ -31,7 +31,6 @@ require('view/top.php')
         strong opinions of both sides, but only votes for the opponents will be shown to others.
         Once you take a side, you can freely leave comments or post opinions on the topic.
         Remember, people with opposing ideas grant yours. Carefully organize your logic and word choices.
-        1234567789 test
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -41,8 +40,29 @@ require('view/top.php')
         It's about rationality, and bringing people closer.
     </div>
 </div>
-
 <h3>Why Forus?</h3>
-<p>asdf</p>
+<p>There are no forums and social networks that do not currently divide people's opinions. Social networks are a good meeting place, but not a good place of consensus. The problem with current social networks and community sites is that they only bring people together in a similar group. But won't it just reinforce the thoughts you originally had?
+
+    Forus ultimately wants to be an alternative social network. I hope it will be a gathering place for those who want to reasonably discuss. I want to be a place like Athens' Agora.</p>
+<div>
+    <img src="Social_network_likemap.png" class="img-responsive center-block" width="50%">
+</div>
+
+<h3>Forus recommendation system</h3>
+
+<p>The principle of the AI ​​recommendation system currently used on YouTube, Netflix, and Facebook is to find a group with similar preferences. Because recommending a favorite movie or video by someone who likes something similar to you can have a high chance of satisfying your viewers.
+</p>
+<div>
+    <img src="recommendation.PNG" class="img-responsive center-block" width="50%">
+</div>
+<div>
+    <img src="Forus_recommendation_system.png" class="img-responsive center-block" width="50%">
+</div>
+<p>
+    Seeing only what you like is about defining limits for yourself. Especially in matters of politics, ethics and ideology, we need to listen to the other side.
+    In democracy, there is no answer, but there is agreement. Forus will recommend opinions from people who think differently from you. You may be uncomfortable seeing it.
+    Forus' referral system does not target a lot of revenue and views. I would like to draw meaningful agreements, even at least.
+    You won't have fun with Forus' recommendation system, but your ideas will surely improve.</p>
+
 </div>
 </div>
