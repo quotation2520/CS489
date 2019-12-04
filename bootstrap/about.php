@@ -60,7 +60,7 @@ require('view/top.php')
 </div>
 <p>
     Seeing only what you like is about defining limits for yourself. Especially in matters of politics, ethics and ideology, we need to listen to the other side.
-    In democracy, there is no answer, but there is agreement. Forus will recommend opinions from people who think differently from you. You may be uncomfortable seeing it.
+    In a democracy, there is no answer, but there is agreement. Forus will recommend opinions from people who think differently from you. You may be uncomfortable seeing it.
     Forus' referral system does not target a lot of revenue and views. I would like to draw meaningful agreements, even at least.
     You won't have fun with Forus' recommendation system, but your ideas will surely improve.</p>
 

@@ -1,12 +1,11 @@
 <?php
-
 function login()
 {
     echo '
     <form action="home.php" method="post">
         <div class="form-group row">
             <div class="col-sm-2 col-sm-offset-7">
-                <input class="form-control" name="id" placeholder="ID">
+                <input class="form-control" name="username" placeholder="ID">
             </div>
             <div class="col-sm-2">
                 <input type="password" class="form-control col-sm-3" name="passwd" placeholder="Password">
@@ -27,11 +26,11 @@ function verify_id()
         'forus',
         '3306'
     );
-    $query = "SELECT pw FROM userinfo WHERE username = '{$_POST['id']}'";
-    $result = mysqli_fetch_row(mysqli_query($conn, $query));
+    $query = "SELECT * FROM userinfo WHERE username = '{$_POST['username']}'";
+    $result = mysqli_fetch_array(mysqli_query($conn, $query));
     if ($result == NULL) return 0;
-    if ($result[0] != $_POST['passwd']) return -1;
-    return 1;
+    if ($result['pw'] != $_POST['passwd']) return -1;
+    return $result['id'];
 }
 
 function insert_new_id()
@@ -44,25 +43,37 @@ function insert_new_id()
         '3306'
     );
     $insert = "INSERT INTO userinfo
-    (username, pw) VALUES('{$_POST['id']}', '{$_POST['passwd']}')";
+    (username, pw) VALUES('{$_POST['username']}', '{$_POST['passwd']}')";
     mysqli_query($conn, $insert);
 }
-
-if (isset($_POST['id'])) {
+if (isset($_POST['login'])){
+    if ($_POST['login'] == 0)
+    {
+        login();
+    } else{
+    $login = $_POST['login'];
+    echo '
+<p style="text-align:end">
+    Welcome ' . load_userinfo($login)["username"].
+        '</p>';
+    }
+}
+else if (isset($_POST['username'])) {
 
     # Check if it is in the server
     if (verify_id() == -1) {
         login();
         echo '
     <p style="text-align:end;color:red">
-        Wrong Password'.$_POST['passwd'].'</p>';
+        Wrong Password</p>';
     } else {
         if (verify_id() == 0) {
             insert_new_id();
         }
+        $login=verify_id();
         echo '
     <p style="text-align:end">
-        Welcome ' . $_POST["id"] .
+        Welcome ' . $_POST["username"] .
             '</p>';
     }
 } else {

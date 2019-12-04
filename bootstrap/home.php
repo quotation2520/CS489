@@ -1,10 +1,28 @@
 <?php
-require('view/top.php')
+require('view/top.php');
 ?>
 
 <?php
-require('login.php')
+function load_userinfo($userid)
+{
+    $conn = mysqli_connect(
+        '110.76.74.76',
+        'remote',
+        'quotation2520',
+        'forus',
+        '3306'
+    );
+    $query = "SELECT * FROM userinfo WHERE id = '{$userid}'";
+    $data = mysqli_fetch_array(mysqli_query($conn, $query));
+    return $data;
+}
+
+$login = 0;
+require('login.php');
+if (isset($_POST['opinion_num']))
+    require('add_opinion.php');
 ?>
+
 <div role="tabpanel">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
@@ -15,8 +33,20 @@ require('login.php')
 </div>
 <p></p>
 
+<?php
+function color_pros_cons($opinion)
+{
+    if ($opinion == null)
+        return;
+    if ($opinion['pc'] == 0)
+        echo 'style="background-color:#b4c7e7"';
+    if ($opinion['pc'] == 1)
+        echo 'style="background-color:#f8cbad"';
+}
+?>
+
 <div class="panel panel-default">
-    <div class="panel-heading">
+    <div class="panel-heading" <?php color_pros_cons($opinion1) ?>>
         <div class="container-fluid">
 
             <div style="font-size:large">
@@ -31,7 +61,14 @@ require('login.php')
                 Do you agree with this practice?
             </div>
             <?php
-            require('view/add_opinion.php')
+            if ($opinion1 == null){
+                $opinion_num = 1;
+                require('view/pros_and_cons.php');
+            }
+            else if ($opinion1['pc'] == 0)  // pro
+                echo '<p style="font-size:large; text-align:right"> Agree </p>';
+            else
+                echo '<p style="font-size:large; text-align:right"> Disagree </p>';
             ?>
         </div>
     </div>
