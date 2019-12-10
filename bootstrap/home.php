@@ -59,7 +59,6 @@ function color_pros_cons($opinion)
         echo 'style="background-color:#f8cbad"';
 }
 require('view/read_opinions.php');
-require('view/pros_and_cons.php');
 ?>
 
 <?php
@@ -83,7 +82,7 @@ $opinion1 = load_opinion($userid, $issueid);
             </div>
             <?php
             if ($opinion1 == null) {
-                participate($userid, $issueid);
+                require('view/pros_and_cons.php');
             } else if ($opinion1['pc'] == 0)  // pro
                 echo '<p style="font-size:large; text-align:right"> I Agree </p>';
             else
@@ -141,7 +140,7 @@ $opinion2 = load_opinion($userid, $issueid);
             </div>
             <?php
             if ($opinion2 == null) {
-                participate($userid, $issueid);
+                require('view/pros_and_cons.php');
             } else if ($opinion2['pc'] == 0)  // pro
                 echo '<p style="font-size:large; text-align:right"> I Agree </p>';
             else
@@ -195,7 +194,7 @@ $opinion3 = load_opinion($userid, $issueid);
             </div>
             <?php
             if ($opinion3 == null) {
-                participate($userid, $issueid);
+                require('view/pros_and_cons.php');
             } else if ($opinion3['pc'] == 0)  // pro
                 echo '<p style="font-size:large; text-align:right"> I Agree </p>';
             else
