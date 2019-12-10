@@ -11,6 +11,7 @@ require('view/top.php')
     </ul>
 </div>
 
-Let us have feedbacks
+Google form link for feedback will be open soon.<br>
+Stay tuned in slack, and thank you for your time!
 </div>
 </div>

@@ -59,7 +59,7 @@ require('view/top.php')
     <img src="Forus_recommendation_system.png" class="img-responsive center-block" width="50%">
 </div>
 <p>
-    Seeing only what you like is about defining limits for yourself. Especially in matters of politics, ethics and ideology, we need to listen to the other side.
+    Seeing only what you like is about defining limits for yourself. Especially in matters of politics, ethics, and ideology, we need to listen to the other side.
     In a democracy, there is no answer, but there is agreement. Forus will recommend opinions from people who think differently from you. You may be uncomfortable seeing it.
     Forus' referral system does not target a lot of revenue and views. I would like to draw meaningful agreements, even at least.
     You won't have fun with Forus' recommendation system, but your ideas will surely improve.</p>

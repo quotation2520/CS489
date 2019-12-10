@@ -46,15 +46,15 @@ function insert_new_id()
     (username, pw) VALUES('{$_POST['username']}', '{$_POST['passwd']}')";
     mysqli_query($conn, $insert);
 }
-if (isset($_POST['login'])){
-    if ($_POST['login'] == 0)
+if (isset($_POST['userid'])){
+    if ($_POST['userid'] == 0)
     {
         login();
     } else{
-    $login = $_POST['login'];
+    $userid = $_POST['userid'];
     echo '
 <p style="text-align:end">
-    Welcome ' . load_userinfo($login)["username"].
+    Welcome ' . load_userinfo($userid)["username"].
         '</p>';
     }
 }
@@ -70,7 +70,7 @@ else if (isset($_POST['username'])) {
         if (verify_id() == 0) {
             insert_new_id();
         }
-        $login=verify_id();
+        $userid=verify_id();
         echo '
     <p style="text-align:end">
         Welcome ' . $_POST["username"] .

@@ -17,10 +17,25 @@ function load_userinfo($userid)
     return $data;
 }
 
-$login = 0;
+function load_opinion($userid, $issueid)
+{
+    $conn = mysqli_connect(
+        '110.76.74.76',
+        'remote',
+        'quotation2520',
+        'forus',
+        '3306'
+    );
+    $query = "SELECT * FROM opinions WHERE userid = '{$userid}' AND issueid = '{$issueid}'";
+    return mysqli_fetch_array(mysqli_query($conn, $query));
+}
+
+$userid = 0;
 require('login.php');
-if (isset($_POST['opinion_num']))
+
+if (isset($_POST['issueid']))
     require('add_opinion.php');
+$issueid = 0;
 ?>
 
 <div role="tabpanel">
@@ -43,8 +58,14 @@ function color_pros_cons($opinion)
     if ($opinion['pc'] == 1)
         echo 'style="background-color:#f8cbad"';
 }
+require('view/read_opinions.php');
+require('view/pros_and_cons.php');
 ?>
 
+<?php
+$issueid = 1;
+$opinion1 = load_opinion($userid, $issueid);
+?>
 <div class="panel panel-default">
     <div class="panel-heading" <?php color_pros_cons($opinion1) ?>>
         <div class="container-fluid">
@@ -61,58 +82,152 @@ function color_pros_cons($opinion)
                 Do you agree with this practice?
             </div>
             <?php
-            if ($opinion1 == null){
-                $opinion_num = 1;
-                require('view/pros_and_cons.php');
-            }
-            else if ($opinion1['pc'] == 0)  // pro
-                echo '<p style="font-size:large; text-align:right"> Agree </p>';
+            if ($opinion1 == null) {
+                participate($userid, $issueid);
+            } else if ($opinion1['pc'] == 0)  // pro
+                echo '<p style="font-size:large; text-align:right"> I Agree </p>';
             else
-                echo '<p style="font-size:large; text-align:right"> Disagree </p>';
+                echo '<p style="font-size:large; text-align:right"> I Disagree </p>';
             ?>
         </div>
     </div>
 
-    <div class="panel-body" style="height:300px; overflow:auto">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#4472c4">
-                <p><strong style="font-size:x-large"> Argument Title</strong></p>
+    <?php
+    if ($opinion1 == null) {
+        echo '<div class="panel-body" style="height:300px; overflow:auto;">';
+        read_neut($issueid);
+        echo '</div>';
+    } else {
 
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                <p style="font-style:italic;text-align:end"> written by Author</p>
+        echo '<div class="panel-body" style="height:100%; overflow:auto;background-color:#e2f0d9">';
+        if ($opinion1['olikes'] == -1) {
+            echo '<h3> No Argument Written </h3>';
+            echo 'No Argument Written</div>';
+        } else {
+            if ($opinion1['title'] != null)
+                echo '<h3>' . $opinion1['title'] . '</h3>';
+            if ($opinion1['opinion'] != null)
+                echo $opinion1['opinion'] . '</div>';
+        }
+    }
+    ?>
+    <?php
+    if ($opinion1 == null);
+    else if ($opinion1['pc'] == 0) {
+        read_cons($issueid);
+    } else if ($opinion1['pc'] == 1) {
+        read_pros($issueid);
+    }
+    ?>
+</div>
+
+
+<?php
+$issueid = 2;
+$opinion2 = load_opinion($userid, $issueid);
+?>
+<div class="panel panel-default">
+    <div class="panel-heading" <?php color_pros_cons($opinion2) ?>>
+        <div class="container-fluid">
+
+            <div style="font-size:large">
+                <span class="label label-primary">CS489</span>
+                <span class="label label-success">Ethics</span>
             </div>
+            <div>
+                <h2> Social networking and automated contents recommendation are making people more radical.</h2>
 
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#ed7d31">
-                <p><strong style="font-size:x-large"> Argument Title</strong> 21 Approves</p>
-
-                This is where a idea comes <br>
-                This is where a idea comes <br>
+                There are claims that SNS services (like Twitter and Facebook) and media platforms (like YouTube and Netflix) makes people more radical. Do you agree?
             </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#4472c4">
-                <p><strong style="font-size:x-large"> Argument Title</strong> 42 Approves</p>
-
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-                <p style="font-style:italic;text-align:end"> written by Author</p>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="height:100%;color:#ed7d31">
-                <p><strong style="font-size:x-large"> Argument Title</strong> 21 Approves</p>
-
-                This is where a idea comes <br>
-                This is where a idea comes <br>
-            </div>
+            <?php
+            if ($opinion2 == null) {
+                participate($userid, $issueid);
+            } else if ($opinion2['pc'] == 0)  // pro
+                echo '<p style="font-size:large; text-align:right"> I Agree </p>';
+            else
+                echo '<p style="font-size:large; text-align:right"> I Disagree </p>';
+            ?>
         </div>
     </div>
+
+    <?php
+    if ($opinion2 == null) {
+        echo '<div class="panel-body" style="height:300px; overflow:auto;">';
+        read_neut($issueid);
+        echo '</div>';
+    } else {
+
+        echo '<div class="panel-body" style="height:100%; overflow:auto;background-color:#e2f0d9">';
+        if ($opinion2['title'] != null)
+            echo '<h3>' . $opinion2['title'] . '</h3>';
+        else echo '<h3> No Argument Written </h3>';
+        if ($opinion2['opinion'] != null)
+            echo $opinion2['opinion'] . '</div>';
+        else echo 'No Argument Written</div>';
+    }
+    ?>
+    <?php
+    if ($opinion2 == null);
+    else if ($opinion2['pc'] == 0) {
+        read_cons($issueid);
+    } else if ($opinion2['pc'] == 1) {
+        read_pros($issueid);
+    }
+    ?>
+</div>
+
+<?php
+$issueid = 3;
+$opinion3 = load_opinion($userid, $issueid);
+?>
+<div class="panel panel-default">
+    <div class="panel-heading" <?php color_pros_cons($opinion3) ?>>
+        <div class="container-fluid">
+
+            <div style="font-size:large">
+                <span class="label label-primary">CS489</span>
+                <span class="label label-warning">Economics</span>
+            </div>
+            <div>
+                <h2> Universal Basic Income is a good policy.</h2>
+
+                <a href="https://en.wikipedia.org/wiki/Basic_income">Universal Basic Income (UBI)</a> is perhaps the most discussed form of social security there is. Do you think UBI should be enforced?
+            </div>
+            <?php
+            if ($opinion3 == null) {
+                participate($userid, $issueid);
+            } else if ($opinion3['pc'] == 0)  // pro
+                echo '<p style="font-size:large; text-align:right"> I Agree </p>';
+            else
+                echo '<p style="font-size:large; text-align:right"> I Disagree </p>';
+            ?>
+        </div>
+    </div>
+
+    <?php
+    if ($opinion3 == null) {
+        echo '<div class="panel-body" style="height:300px; overflow:auto;">';
+        read_neut($issueid);
+        echo '</div>';
+    } else {
+
+        echo '<div class="panel-body" style="height:100%; overflow:auto;background-color:#e2f0d9">';
+        if ($opinion3['title'] != null)
+            echo '<h3>' . $opinion3['title'] . '</h3>';
+        else echo '<h3> No Argument Written </h3>';
+        if ($opinion3['opinion'] != null)
+            echo $opinion3['opinion'] . '</div>';
+        else echo 'No Argument Written</div>';
+    }
+    ?>
+    <?php
+    if ($opinion3 == null);
+    else if ($opinion3['pc'] == 0) {
+        read_cons($issueid);
+    } else if ($opinion3['pc'] == 1) {
+        read_pros($issueid);
+    }
+    ?>
 </div>
 
 </div>
